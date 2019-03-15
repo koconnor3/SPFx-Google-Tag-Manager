@@ -80,7 +80,7 @@ export default class AnalyticsApplicationCustomizer
 
     eval(`
           window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({'event':'partial-pageview', 'page': ${document.URL}});
+          window.dataLayer.push({'event':'virtualPageView', 'virtualPageView': ${document.URL}});
         `);
   }
 

@@ -79,7 +79,7 @@ export default class GoogleAnalyticsApplicationCustomizer
 
     eval(`
           window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({'event':'partial-pageview', 'page': ${document.URL}});
+          window.dataLayer.push({'event':'virtualPageView', 'virtualPageView': ${document.URL}});
         `);
   }
 
