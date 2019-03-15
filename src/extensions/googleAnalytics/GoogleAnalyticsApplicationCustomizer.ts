@@ -59,20 +59,17 @@ export default class GoogleAnalyticsApplicationCustomizer
   }
 
   private realInitialNavigatedEvent(trackingID: string): void {
+    console.log("Adding GTM full page load...");
 
-    console.log("Tracking full page load...");
-
-    var gtagScript = document.createElement("script");
-    gtagScript.type = "text/javascript";
-    gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${trackingID}`;
-    gtagScript.async = true;
-    document.head.appendChild(gtagScript);
+    var gtmScript = document.createElement("script");
+    gtmScript.type = "text/javascript";
+    gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${trackingID}`;
+    gtmScript.async = true;
+    document.head.appendChild(gtmScript);
 
     eval(`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config',  '${trackingID}');
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({'gtm.start':new Date().getTime(), event: 'gtm.js'});
         `);
   }
 
@@ -81,11 +78,8 @@ export default class GoogleAnalyticsApplicationCustomizer
     console.log("Tracking partial page load...");
 
     eval(`
-        if(ga) {
-          ga('create', '${trackingID}', 'auto');
-          ga('set', 'page', '${this.getFreshCurrentPage()}');
-          ga('send', 'pageview');
-        }
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({'event':'partial-pageview', 'page': ${document.URL}});
         `);
   }
 
