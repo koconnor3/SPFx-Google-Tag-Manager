@@ -9,7 +9,7 @@
         "0b6313bf-13c8-4ed3-955b-8a0bedd8e806": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "trackingID": "GTM-PGSM4QX"
+            "trackingID": "GTM-######"
           }
         }
       }
@@ -20,7 +20,7 @@
         "0b6313bf-13c8-4ed3-955b-8a0bedd8e806": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "trackingID": "GTM-PGSM4QX"
+            "trackingID": "GTM-######"
           }
         }
       }
